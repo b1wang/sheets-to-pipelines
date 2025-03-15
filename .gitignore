@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+notebooks/.ipynb_checkpoints
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# Test files and sensitive information
+.env
+test.ipynb
+data/       
