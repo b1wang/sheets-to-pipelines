@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  jupyter:
+    image: jupyter/base-notebook:latest  # Official Jupyter image
+    container_name: stp_jupyter
+    shm_size: 2g
+    privileged: true
+    ports:
+      - "8888:8888"  # Maps Jupyter Notebook port to your local machine
+    volumes:
+      - ./notebooks:/home/jovyan/work  # Mount local "notebooks" folder inside the container
+    environment:
+      - JUPYTER_ENABLE_LAB=yes  # Enables JupyterLab instead of classic Notebook
+    command: start-notebook.sh --NotebookApp.token=''
+
+  postgres:
+    image: postgres:latest
+    container_name: stp_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  airflow:
+    image: apache/airflow:2.7.0
+    container_name: stp_airflow
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+  etl:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: stp_etl_runner
+    volumes:
+      - ./src/etl_scripts:/app/etl_scripts
+      - ./data:/app/data
+    env_file:
+      - .env
+    command: tail -f /dev/null
+    depends_on:
+      - postgres
+
+volumes: 
+  postgres_data:
