@@ -11,5 +11,4 @@ docker-compose.override.yml
 
 # Test files and sensitive information
 .env
-test.ipynb
-data/       
+data/ 

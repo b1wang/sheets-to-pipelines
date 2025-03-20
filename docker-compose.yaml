@@ -1,18 +1,28 @@
-version: "3.8"
 
 services:
-  jupyter:
-    image: jupyter/base-notebook:latest  # Official Jupyter image
-    container_name: stp_jupyter
-    shm_size: 2g
-    privileged: true
+  backend:
+    build: ./src/backend
+    container_name: stp_api
     ports:
-      - "8888:8888"  # Maps Jupyter Notebook port to your local machine
+      - "8000:8000"
     volumes:
-      - ./notebooks:/home/jovyan/work  # Mount local "notebooks" folder inside the container
+      - ./src/backend:/app
+    depends_on: 
+      - postgres
+    env_file:
+      .env
+
+  frontend:
+    build: ./src/frontend
+    container_name: stp_app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    volumes:
+      - ./src/frontend:/app
     environment:
-      - JUPYTER_ENABLE_LAB=yes  # Enables JupyterLab instead of classic Notebook
-    command: start-notebook.sh --NotebookApp.token=''
+      - STREAMLIT_SERVER_RUN_ON_SAVE=true
 
   postgres:
     image: postgres:latest
@@ -39,20 +49,6 @@ services:
       - ./airflow/dags:/opt/airflow/dags
     ports:
       - "8080:8080"
-    depends_on:
-      - postgres
-
-  etl:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-    container_name: stp_etl_runner
-    volumes:
-      - ./src/etl_scripts:/app/etl_scripts
-      - ./data:/app/data
-    env_file:
-      - .env
-    command: tail -f /dev/null
     depends_on:
       - postgres
 
