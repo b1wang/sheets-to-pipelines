@@ -1,4 +1,4 @@
-# <p style="text-align: center;"> From Excel Sheets to a Data Machine
+# <p style="text-align: center;"> From Excel Sheets to a Data Machine </p>
 
 
 
@@ -20,9 +20,9 @@ Built in a real-world business environment, this initiative demonstrates hands-o
 <details>
 <summary>Journal</summary>
 
-- [Week 0 - Kickoff](journal\2025-03-14-kickoff.md)
-- [Week 1 - Basic Infrastructure](journal\2025-03-17-week01.md)
-- [Week 2 - Finishing CRUD](journal\2025-03-23-week02.md)
+- [Week 0 - Kickoff](https://github.com/b1wang/sheets-to-pipelines/blob/main/journal/2025-03-14-kickoff.md)
+- [Week 1 - Basic Infrastructure](https://github.com/b1wang/sheets-to-pipelines/blob/main/journal/2025-03-17-week01.md)
+- [Week 2 - Finishing CRUD](https://github.com/b1wang/sheets-to-pipelines/blob/main/journal/2025-03-23-week02.md)
 </details>
 
 
