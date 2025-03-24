@@ -36,21 +36,5 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  airflow:
-    image: apache/airflow:2.7.0
-    container_name: stp_airflow
-    environment:
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}
-      AIRFLOW__CORE__FERNET_KEY: ''
-      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
-      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
-    volumes:
-      - ./airflow/dags:/opt/airflow/dags
-    ports:
-      - "8080:8080"
-    depends_on:
-      - postgres
-
 volumes: 
   postgres_data:

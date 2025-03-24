@@ -1,2 +1,19 @@
-# sheets-to-pipelines
-This project demonstrates the transformation of traditional spreadsheet-based data workflows into scalable, automated ML pipelines. This is a self-directed learning initiative in a real-world environment, aimed to highlight practical MLOps concepts and end-to-end pipeline construction using synthetic data for demonstration purposes.
+# <p style="text-align: center;"> From Excel Sheets to a Data Machine
+
+
+
+*There are many companies that depend on Excel for their data management.*
+
+Sheets-to-Pipeline is my journey of transforming a legacy, spreadsheet-based system into a robust data infrastructure—complete with automated ETL pipelines, a queryable database, business intelligence dashboards, and ML-ready architecture.
+
+Built in a real-world business environment, this initiative demonstrates hands-on experience with:
+
+- **Data engineering** (ETL pipelines, PostgreSQL, Airflow)
+- **Backend development** (FastAPI, Docker, Pydantic)
+- **Business intelligence** (clean dashboards, real metrics with Streamlit)
+- **MLOps foundations** (structured data flow ready for ML models)
+
+**The goal**: bring industry-standard practices into a non-technical setting—while gaining and showcasing skills relevant for data and ML engineering roles.
+
+## Resources:
+[Journal](journal\2025-03-14-kickoff.md)
