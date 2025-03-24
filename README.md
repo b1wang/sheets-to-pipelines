@@ -16,4 +16,15 @@ Built in a real-world business environment, this initiative demonstrates hands-o
 **The goal**: bring industry-standard practices into a non-technical setting—while gaining and showcasing skills relevant for data and ML engineering roles.
 
 ## Resources:
-[Journal](journal\2025-03-14-kickoff.md)
+
+<details>
+<summary>Journal</summary>
+
+- [Week 0 - Kickoff](journal\2025-03-14-kickoff.md)
+- [Week 1 - Basic Infrastructure](journal\2025-03-17-week01.md)
+- [Week 2 - Finishing CRUD](journal\2025-03-23-week02.md)
+</details>
+
+
+
+
