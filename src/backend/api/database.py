@@ -4,7 +4,6 @@ from sqlalchemy.orm import sessionmaker, DeclarativeBase
 from dotenv import load_dotenv
 import os
 
-# ----------- ENV ------------
 load_dotenv()
 
 DB_USER = os.getenv("DB_USER")

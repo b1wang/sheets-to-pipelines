@@ -1,0 +1,23 @@
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+
+# Ignore environment variables
+.env
+
+# Ignore build/config files
+Dockerfile
+.dockerignore
+
+# Ignore IDE/editor settings
+.vscode/
+.idea/
+
+# Ignore test output
+*.coverage
+htmlcov/
+tests/
+
+# Ignore version control
+.git/
+.gitignore
